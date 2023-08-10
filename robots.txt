@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: findnick.xyz/sitemap.xml
+Sitemap: sitemap.xml
