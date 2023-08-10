@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>FN的幻想岛</title>
-    <link>/</link>
+    <link>https://find-nick.github.io/</link>
     <description>Recent content on FN的幻想岛</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 10 Aug 2023 20:13:23 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 10 Aug 2023 20:13:23 +0800</lastBuildDate><atom:link href="https://find-nick.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>二分</title>
-      <link>/post/binary-search/</link>
+      <link>https://find-nick.github.io/post/binary-search/</link>
       <pubDate>Thu, 10 Aug 2023 20:13:23 +0800</pubDate>
       
-      <guid>/post/binary-search/</guid>
+      <guid>https://find-nick.github.io/post/binary-search/</guid>
       
       <description>&lt;h3 id=&#34;前提条件-满足单调性&#34;&gt;前提条件-满足单调性&lt;/h3&gt;
 &lt;p&gt;满足单调性:&lt;/p&gt;
