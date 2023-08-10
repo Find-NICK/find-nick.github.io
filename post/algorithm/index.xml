@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FN的幻想岛</title>
+    <link>./post/algorithm/</link>
+    <description>Recent content on FN的幻想岛</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 10 Aug 2023 20:13:23 +0800</lastBuildDate><atom:link href="./post/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>二分</title>
+      <link>./post/algorithm/binary-search/</link>
+      <pubDate>Thu, 10 Aug 2023 20:13:23 +0800</pubDate>
+      
+      <guid>./post/algorithm/binary-search/</guid>
+      
+      <description>&lt;h3 id=&#34;前提条件-满足单调性&#34;&gt;前提条件-满足单调性&lt;/h3&gt;
+&lt;p&gt;满足单调性:&lt;/p&gt;
+&lt;p&gt;✅✅✅✅✅✅❌❌❌❌
+(求最大值)&lt;/p&gt;
+&lt;p&gt;❌❌❌✅✅✅✅✅✅✅
+(求最小值)&lt;/p&gt;
+&lt;p&gt;不满足单调性:&lt;/p&gt;
+&lt;p&gt;✅❌✅✅✅❌
+(&lt;del&gt;建议直接暴力&lt;/del&gt;)&lt;/p&gt;
+&lt;h3 id=&#34;求最大值&#34;&gt;求最大值&lt;/h3&gt;
+&lt;h4 id=&#34;例子&#34;&gt;例子&lt;/h4&gt;
+&lt;p&gt;在&lt;code&gt;✅✅✅✅✅✅❌❌❌❌&lt;/code&gt;中查找最大的✅&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;$ L=1,R=10,MID=(1+10+1)/2=6 $&lt;/p&gt;
+&lt;p&gt;✅✅✅✅✅&lt;mark&gt;✅&lt;/mark&gt;❌❌❌❌&lt;/p&gt;
+&lt;p&gt;满足,所以 $ L=MID=6 $&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$ L=6,R=10,MID=(6+10+1)/2=8 $&lt;/p&gt;
+&lt;p&gt;✅✅✅✅✅✅❌&lt;mark&gt;❌&lt;/mark&gt;❌❌&lt;/p&gt;
+&lt;p&gt;不满足,所以 $ R=MID-1=7 $&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$ L=6,R=7,mid=(6+7+1)/2=7 $&lt;/p&gt;
+&lt;p&gt;✅✅✅✅✅✅&lt;mark&gt;❌&lt;/mark&gt;❌❌❌&lt;/p&gt;
+&lt;p&gt;不满足,所以 $ R=MID-1=6 $&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;因为 $ L=R $ ,所以二分结束.&lt;/p&gt;
+&lt;h4 id=&#34;code&#34;&gt;code&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;while&lt;/span&gt;(l&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;r){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#458;font-weight:bold&#34;&gt;int&lt;/span&gt; mid&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;(l&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;+&lt;/span&gt;r&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#099&#34;&gt;1&lt;/span&gt;)&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#099&#34;&gt;2&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;if&lt;/span&gt;(check(mid)){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        l&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;mid;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;else&lt;/span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        r&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;mid&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#099&#34;&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;求最小值&#34;&gt;求最小值&lt;/h3&gt;
+&lt;h4 id=&#34;例子-1&#34;&gt;例子&lt;/h4&gt;
+&lt;p&gt;在&lt;code&gt;❌❌❌✅✅✅✅✅✅✅&lt;/code&gt;中查找最小的✅&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;$ L=1,R=10,MID=(1+10)/2=5 $&lt;/p&gt;
+&lt;p&gt;❌❌❌✅&lt;mark&gt;✅&lt;/mark&gt;✅✅✅✅✅&lt;/p&gt;
+&lt;p&gt;满足,所以 $ R=MID=5 $&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$ L=1,R=5,MID=(1+5)/2=3 $&lt;/p&gt;
+&lt;p&gt;❌❌&lt;mark&gt;❌&lt;/mark&gt;✅✅✅✅✅✅✅&lt;/p&gt;
+&lt;p&gt;不满足,所以 $ L=MID+1=4 $&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$ L=4,R=5,MID=(4+5)/2=4 $&lt;/p&gt;
+&lt;p&gt;❌❌❌✅&lt;mark&gt;✅&lt;/mark&gt;✅✅✅✅✅&lt;/p&gt;
+&lt;p&gt;满足,所以 $ R=4 $&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;因为 $ L=R $ ,所以二分结束.&lt;/p&gt;
+&lt;h4 id=&#34;code-1&#34;&gt;code&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;while&lt;/span&gt;(l&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;r) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#458;font-weight:bold&#34;&gt;long&lt;/span&gt; &lt;span style=&#34;color:#458;font-weight:bold&#34;&gt;long&lt;/span&gt; mid&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;(l&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;+&lt;/span&gt;r)&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#099&#34;&gt;2&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;if&lt;/span&gt;(check(mid)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        r&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;mid;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    } &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;else&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        l&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;mid&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#099&#34;&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>
