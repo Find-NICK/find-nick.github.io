@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>FN的幻想岛</title>
+    <title>一隅</title>
     <link>/</link>
-    <description>Recent content on FN的幻想岛</description>
+    <description>Recent content on 一隅</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Fri, 11 Aug 2023 21:27:09 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
@@ -63,7 +63,7 @@
       
       <guid>/about/</guid>
       
-      <description>&lt;p&gt;两年了,还是那么弱.&lt;/p&gt;
+      <description>&lt;p&gt;在互联网上属于FN的小角落.&lt;/p&gt;
 </description>
       
     </item>
