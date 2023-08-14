@@ -26,24 +26,6 @@
 
   
   
-  
-<script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$'], ['\\[', '\\]']],
-      processEscapes: true,
-      processEnvironments: true,
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'option'],
-        }
-  };
-</script>
-<script async defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
-
-
-  
 
   
   <meta property="og:title" content="0x3f" />
@@ -89,7 +71,8 @@
     <header id="header">
   
   
-  <script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js"></script>
+  <script src="https://unpkg.com/instant.page@5.2.0/instantpage.js"></script>
+  <link href="/css/custom.css" rel="stylesheet" />
   <h1>
     <a href="/">0x3f</a>
   </h1>
@@ -97,7 +80,7 @@
 
   
   
-  
+  <script> MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$','$$'], ['\\[', '\\]']], processEscapes: true, processEnvironments: true }, options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] } }; window.addEventListener('load', (event) => { document.querySelectorAll("mjx-container").forEach(function(x){ x.parentElement.classList += 'has-jax'}) }); </script> <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <script id="MathJax-script" async src="https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
   <nav>
     
     <span class="nav-bar-item">
@@ -217,8 +200,6 @@
 
   </div>
   
-  
-  <link media="screen" rel="stylesheet" href="/css/custom.css" />
   
 
   
