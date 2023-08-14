@@ -6,13 +6,24 @@
     <description>Recent content in Tags on 0x3f</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 11 Aug 2023 21:27:09 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 14 Aug 2023 13:42:13 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>algorithm</title>
       <link>/tags/algorithm/</link>
-      <pubDate>Fri, 11 Aug 2023 21:27:09 +0800</pubDate>
+      <pubDate>Mon, 14 Aug 2023 13:42:13 +0800</pubDate>
       
       <guid>/tags/algorithm/</guid>
+      
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>solution</title>
+      <link>/tags/solution/</link>
+      <pubDate>Mon, 14 Aug 2023 13:42:13 +0800</pubDate>
+      
+      <guid>/tags/solution/</guid>
       
       <description></description>
       
