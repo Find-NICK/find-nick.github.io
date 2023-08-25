@@ -20,7 +20,7 @@
 
   
   
-  <meta name="keywords" content=" OI  code  algorithm  solution ">
+  <meta name="keywords" content=" OI  code  algorithm ">
   
 
   
@@ -129,25 +129,6 @@
   </div>
   
   
-  
-  <details>
-    <summary>
-      <b>Table of Contents</b>
-    </summary>
-    <div class="toc"><nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#前提条件-满足单调性">前提条件-满足单调性</a></li>
-        <li><a href="#求最大值">求最大值</a></li>
-        <li><a href="#求最小值">求最小值</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav></div>
-  </details>
-  
-  
   <article class="content">
     
     <h3 id="前提条件-满足单调性">前提条件-满足单调性</h3>
@@ -181,13 +162,13 @@
 </ol>
 <p>因为 $ L=R $ ,所以二分结束.</p>
 <h4 id="code">code</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">while</span>(l<span style="color:#000;font-weight:bold">&lt;</span>r){
-</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> mid<span style="color:#000;font-weight:bold">=</span>(l<span style="color:#000;font-weight:bold">+</span>r<span style="color:#000;font-weight:bold">+</span><span style="color:#099">1</span>)<span style="color:#000;font-weight:bold">/</span><span style="color:#099">2</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span>(check(mid)){
-</span></span><span style="display:flex;"><span>        l<span style="color:#000;font-weight:bold">=</span>mid;
+<div class="highlight"><pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#5317ac">while</span>(l<span style="color:#00538b">&lt;</span>r){
+</span></span><span style="display:flex;"><span>    <span style="color:#005a5f">int</span> mid<span style="color:#00538b">=</span>(l<span style="color:#00538b">+</span>r<span style="color:#00538b">+</span><span style="color:#0000c0">1</span>)<span style="color:#00538b">/</span><span style="color:#0000c0">2</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">if</span>(check(mid)){
+</span></span><span style="display:flex;"><span>        l<span style="color:#00538b">=</span>mid;
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">else</span>{
-</span></span><span style="display:flex;"><span>        r<span style="color:#000;font-weight:bold">=</span>mid<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">else</span>{
+</span></span><span style="display:flex;"><span>        r<span style="color:#00538b">=</span>mid<span style="color:#00538b">-</span><span style="color:#0000c0">1</span>;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="求最小值">求最小值</h3>
@@ -212,12 +193,12 @@
 </ol>
 <p>因为 $ L=R $ ,所以二分结束.</p>
 <h4 id="code-1">code</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">while</span>(l<span style="color:#000;font-weight:bold">&lt;</span>r) {
-</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">long</span> <span style="color:#458;font-weight:bold">long</span> mid<span style="color:#000;font-weight:bold">=</span>(l<span style="color:#000;font-weight:bold">+</span>r)<span style="color:#000;font-weight:bold">/</span><span style="color:#099">2</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span>(check(mid)) {
-</span></span><span style="display:flex;"><span>        r<span style="color:#000;font-weight:bold">=</span>mid;
-</span></span><span style="display:flex;"><span>    } <span style="color:#000;font-weight:bold">else</span> {
-</span></span><span style="display:flex;"><span>        l<span style="color:#000;font-weight:bold">=</span>mid<span style="color:#000;font-weight:bold">+</span><span style="color:#099">1</span>;
+<div class="highlight"><pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#5317ac">while</span>(l<span style="color:#00538b">&lt;</span>r) {
+</span></span><span style="display:flex;"><span>    <span style="color:#005a5f">long</span> <span style="color:#005a5f">long</span> mid<span style="color:#00538b">=</span>(l<span style="color:#00538b">+</span>r)<span style="color:#00538b">/</span><span style="color:#0000c0">2</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#5317ac">if</span>(check(mid)) {
+</span></span><span style="display:flex;"><span>        r<span style="color:#00538b">=</span>mid;
+</span></span><span style="display:flex;"><span>    } <span style="color:#5317ac">else</span> {
+</span></span><span style="display:flex;"><span>        l<span style="color:#00538b">=</span>mid<span style="color:#00538b">+</span><span style="color:#0000c0">1</span>;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
