@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
   
   
   <meta name="author" content="Find_NICK">
@@ -60,7 +59,6 @@
 <meta name="twitter:title" content="前缀和&amp;差分"/>
 <meta name="twitter:description" content="前缀和 作用:求区间和 时间复杂度: $ O(n) $ 预处理, $ O(1) $ 查询. 预处理 假设原数组为$ a_1,a_2,a_3,&hellip; $ 前缀和数组 $ sum_1=a_1 $ $ sum_2=a_1&#43;a_2=sum_1&#43;a_2 $ $ sum_3=a_1&#43;a_2&#43;a_3=sum_2&#43;a_3 $ $ &hellip; $ 查询 查询 $ [l,r] $ 区间内和："/>
 
-
   
 <link rel="stylesheet" href='/css/single.css'>
 
@@ -80,10 +78,12 @@
   
   
   
+  
   <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@300;700&display=swap">
   <script defer src="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.staticfile.org/KaTeX/0.16.8/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.staticfile.org/twikoo/1.6.18/twikoo.all.min.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     renderMathInElement(document.body, {
@@ -126,6 +126,9 @@
     
     <a class="link" href='/tags/algorithm'>#algorithm</a>
     
+  </div>
+  <div>
+    <span id="twikoo_visitors">0</span> Reads
   </div>
   
   
@@ -187,8 +190,17 @@
     
     
     
+
   </div>
+  <div id="tcomment"></div>
+  <script type="module">
+  twikoo.init({
+    envId: 'https://twikoo.findnick.top/',
+    el: '#tcomment',
+  })
+</script>
   
+
 </main>
 
     <footer id="footer">
@@ -201,6 +213,7 @@
 </footer>
 
   </div>
+  
   
   
 

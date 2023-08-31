@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
   
   
   <meta name="author" content="Find_NICK">
@@ -60,7 +59,6 @@
 <meta name="twitter:title" content="洛谷P1083"/>
 <meta name="twitter:description" content="可以发现,当第 $ i $ 个订单可以满足时,第 $ i-1 $ 个订单也可以满足. 于是可以想到二分答案求解,差分计算每个订单,复杂度 $ O(n\log{n}) $ . #include&lt;cstdio&gt; #include&lt;cstring&gt; #include&lt;algorithm&gt; using namespace std; long long num[1000006];"/>
 
-
   
 <link rel="stylesheet" href='/css/single.css'>
 
@@ -80,10 +78,12 @@
   
   
   
+  
   <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@300;700&display=swap">
   <script defer src="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.staticfile.org/KaTeX/0.16.8/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.staticfile.org/twikoo/1.6.18/twikoo.all.min.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     renderMathInElement(document.body, {
@@ -128,6 +128,9 @@
     
     <a class="link" href='/tags/solution'>#solution</a>
     
+  </div>
+  <div>
+    <span id="twikoo_visitors">0</span> Reads
   </div>
   
   
@@ -204,8 +207,17 @@
     
     
     
+
   </div>
+  <div id="tcomment"></div>
+  <script type="module">
+  twikoo.init({
+    envId: 'https://twikoo.findnick.top/',
+    el: '#tcomment',
+  })
+</script>
   
+
 </main>
 
     <footer id="footer">
@@ -218,6 +230,7 @@
 </footer>
 
   </div>
+  
   
   
 
