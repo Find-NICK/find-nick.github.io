@@ -2,55 +2,55 @@
 <meta name=twitter:card content="summary"><meta name=twitter:title content="洛谷P1083"><meta name=twitter:description content="可以发现,当第 $ i $ 个订单可以满足时,第 $ i-1 $ 个订单也可以满足. 于是可以想到二分答案求解,差分计算每个订单,复杂度 $ O(n\log{n}) $ . #include<cstdio> #include<cstring> #include<algorithm> using namespace std; long long num[1000006];"><link rel=stylesheet href=https://findnick.top/css/single.css><div id=wrapper><header id=header><h1><a href=https://findnick.top/>0x3f</a></h1><link href=/css/custom.css rel=stylesheet><link rel=stylesheet href=https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css crossorigin=anonymous><script defer src=https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.js crossorigin=anonymous></script><script defer src=https://cdn.staticfile.org/KaTeX/0.16.8/contrib/auto-render.min.js crossorigin=anonymous></script><link rel=stylesheet href=https://cdn.staticfile.org/firacode/6.2.0/fira_code.min.css><link rel=stylesheet href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@300;700&display=swap" crossorigin=anonymous><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"\\[",right:"\\]",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1}],ignoredTags:["script","noscript","style","textarea","pre","code","option"],throwOnError:!1})})</script><script defer src=https://cdn.staticfile.org/twikoo/1.6.20/twikoo.min.js></script><nav><span class=nav-bar-item><a class=link href=/>Post</a>
 </span><span class=nav-bar-item><a class=link href=/post/>Archives</a>
 </span><span class=nav-bar-item><a class=link href=/about/>About</a></span></nav></header><main id=main class=post><h1>洛谷P1083</h1><div><b>Keywords: </b><a class=link href=https://findnick.top/tags/algorithm>#algorithm</a>
-<a class=link href=https://findnick.top/tags/solution>#solution</a></div><article class=content><p>可以发现,当第 $ i $ 个订单可以满足时,第 $ i-1 $ 个订单也可以满足.<p>于是可以想到二分答案求解,差分计算每个订单,复杂度 $ O(n\log{n}) $ .<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#289870>#include</span><span style=color:#289870>&lt;cstdio&gt;</span><span style=color:#289870>
-</span></span></span><span style=display:flex><span><span style=color:#289870>#include</span><span style=color:#289870>&lt;cstring&gt;</span><span style=color:#289870>
-</span></span></span><span style=display:flex><span><span style=color:#289870>#include</span><span style=color:#289870>&lt;algorithm&gt;</span><span style=color:#289870>
-</span></span></span><span style=display:flex><span><span style=color:#289870></span><span style=color:#2838b0>using</span> <span style=color:#2838b0>namespace</span> std<span style=color:#888>;</span> 
-</span></span><span style=display:flex><span><span style=color:#2838b0;font-style:italic>long</span> <span style=color:#2838b0;font-style:italic>long</span> num<span style=color:#888>[</span><span style=color:#444>1000006</span><span style=color:#888>];</span>
-</span></span><span style=display:flex><span><span style=color:#2838b0;font-style:italic>long</span> <span style=color:#2838b0;font-style:italic>long</span> r<span style=color:#888>[</span><span style=color:#444>1000006</span><span style=color:#888>],</span>n<span style=color:#888>,</span>m<span style=color:#888>,</span>res<span style=color:#888>;</span>
-</span></span><span style=display:flex><span><span style=color:#2838b0>struct</span> <span style=color:#287088>Node</span><span style=color:#888>{</span>
-</span></span><span style=display:flex><span>	<span style=color:#2838b0;font-style:italic>long</span> <span style=color:#2838b0;font-style:italic>long</span> l<span style=color:#888>,</span>r<span style=color:#888>,</span>k<span style=color:#888>;</span>
-</span></span><span style=display:flex><span><span style=color:#888>}</span>node<span style=color:#888>[</span><span style=color:#444>1000006</span><span style=color:#888>];</span>
-</span></span><span style=display:flex><span><span style=color:#2838b0;font-style:italic>int</span> <span style=color:#785840>check</span><span style=color:#888>(</span><span style=color:#2838b0;font-style:italic>long</span> <span style=color:#2838b0;font-style:italic>long</span> x<span style=color:#888>){</span>
-</span></span><span style=display:flex><span>	res<span style=color:#666>=</span><span style=color:#444>0</span><span style=color:#888>;</span>
-</span></span><span style=display:flex><span>	memset<span style=color:#888>(</span>num<span style=color:#888>,</span><span style=color:#444>0</span><span style=color:#888>,</span><span style=color:#2838b0>sizeof</span> num<span style=color:#888>);</span>
-</span></span><span style=display:flex><span>	<span style=color:#2838b0>for</span><span style=color:#888>(</span><span style=color:#2838b0;font-style:italic>int</span> i<span style=color:#666>=</span><span style=color:#444>1</span><span style=color:#888>;</span>i<span style=color:#666>&lt;=</span>x<span style=color:#888>;</span>i<span style=color:#666>++</span><span style=color:#888>){</span>
-</span></span><span style=display:flex><span>		num<span style=color:#888>[</span>node<span style=color:#888>[</span>i<span style=color:#888>].</span>l<span style=color:#888>]</span><span style=color:#666>+=</span>node<span style=color:#888>[</span>i<span style=color:#888>].</span>k<span style=color:#888>;</span>
-</span></span><span style=display:flex><span>		num<span style=color:#888>[</span>node<span style=color:#888>[</span>i<span style=color:#888>].</span>r<span style=color:#666>+</span><span style=color:#444>1</span><span style=color:#888>]</span><span style=color:#666>-=</span>node<span style=color:#888>[</span>i<span style=color:#888>].</span>k<span style=color:#888>;</span>
-</span></span><span style=display:flex><span>	<span style=color:#888>}</span>
-</span></span><span style=display:flex><span>	<span style=color:#2838b0>for</span><span style=color:#888>(</span><span style=color:#2838b0;font-style:italic>int</span> i<span style=color:#666>=</span><span style=color:#444>1</span><span style=color:#888>;</span>i<span style=color:#666>&lt;=</span>n<span style=color:#888>;</span>i<span style=color:#666>++</span><span style=color:#888>){</span>
-</span></span><span style=display:flex><span>		res<span style=color:#666>+=</span>num<span style=color:#888>[</span>i<span style=color:#888>];</span>
-</span></span><span style=display:flex><span>		<span style=color:#2838b0>if</span><span style=color:#888>(</span>res<span style=color:#666>&gt;</span>r<span style=color:#888>[</span>i<span style=color:#888>]){</span>
-</span></span><span style=display:flex><span>			<span style=color:#2838b0>return</span>  <span style=color:#444>0</span><span style=color:#888>;</span>
-</span></span><span style=display:flex><span>		<span style=color:#888>}</span>
-</span></span><span style=display:flex><span>	<span style=color:#888>}</span>
-</span></span><span style=display:flex><span>	<span style=color:#2838b0>return</span> <span style=color:#444>1</span><span style=color:#888>;</span>
-</span></span><span style=display:flex><span><span style=color:#888>}</span>
-</span></span><span style=display:flex><span><span style=color:#2838b0;font-style:italic>int</span> <span style=color:#785840>main</span><span style=color:#888>(){</span>
-</span></span><span style=display:flex><span>	scanf<span style=color:#888>(</span><span style=color:#b83838>&#34;%lld%lld&#34;</span><span style=color:#888>,</span><span style=color:#666>&amp;</span>n<span style=color:#888>,</span><span style=color:#666>&amp;</span>m<span style=color:#888>);</span>
-</span></span><span style=display:flex><span>	<span style=color:#2838b0>for</span><span style=color:#888>(</span><span style=color:#2838b0;font-style:italic>int</span> i<span style=color:#666>=</span><span style=color:#444>1</span><span style=color:#888>;</span>i<span style=color:#666>&lt;=</span>n<span style=color:#888>;</span>i<span style=color:#666>++</span><span style=color:#888>){</span>
-</span></span><span style=display:flex><span>		scanf<span style=color:#888>(</span><span style=color:#b83838>&#34;%lld&#34;</span><span style=color:#888>,</span><span style=color:#666>&amp;</span>r<span style=color:#888>[</span>i<span style=color:#888>]);</span>
-</span></span><span style=display:flex><span>	<span style=color:#888>}</span>
-</span></span><span style=display:flex><span>	<span style=color:#2838b0>for</span><span style=color:#888>(</span><span style=color:#2838b0;font-style:italic>int</span> i<span style=color:#666>=</span><span style=color:#444>1</span><span style=color:#888>;</span>i<span style=color:#666>&lt;=</span>m<span style=color:#888>;</span>i<span style=color:#666>++</span><span style=color:#888>){</span>
-</span></span><span style=display:flex><span>		scanf<span style=color:#888>(</span><span style=color:#b83838>&#34;%lld%lld%lld&#34;</span><span style=color:#888>,</span><span style=color:#666>&amp;</span>node<span style=color:#888>[</span>i<span style=color:#888>].</span>k<span style=color:#888>,</span><span style=color:#666>&amp;</span>node<span style=color:#888>[</span>i<span style=color:#888>].</span>l<span style=color:#888>,</span><span style=color:#666>&amp;</span>node<span style=color:#888>[</span>i<span style=color:#888>].</span>r<span style=color:#888>);</span>
-</span></span><span style=display:flex><span>	<span style=color:#888>}</span>
-</span></span><span style=display:flex><span>	<span style=color:#2838b0;font-style:italic>long</span> <span style=color:#2838b0;font-style:italic>long</span> l<span style=color:#666>=</span><span style=color:#444>0</span><span style=color:#888>,</span>r<span style=color:#666>=</span>m<span style=color:#888>;</span>
-</span></span><span style=display:flex><span>	<span style=color:#2838b0>while</span><span style=color:#888>(</span>l<span style=color:#666>&lt;</span>r<span style=color:#888>){</span>
-</span></span><span style=display:flex><span>		<span style=color:#2838b0;font-style:italic>long</span> <span style=color:#2838b0;font-style:italic>long</span> mid<span style=color:#666>=</span><span style=color:#888>(</span>l<span style=color:#666>+</span>r<span style=color:#666>+</span><span style=color:#444>1</span><span style=color:#888>)</span><span style=color:#666>&gt;&gt;</span><span style=color:#444>1</span><span style=color:#888>;</span>
-</span></span><span style=display:flex><span>		<span style=color:#2838b0>if</span><span style=color:#888>(</span>check<span style=color:#888>(</span>mid<span style=color:#888>)){</span>
-</span></span><span style=display:flex><span>			l<span style=color:#666>=</span>mid<span style=color:#888>;</span>
-</span></span><span style=display:flex><span>		<span style=color:#888>}</span>
-</span></span><span style=display:flex><span>		<span style=color:#2838b0>else</span><span style=color:#888>{</span>
-</span></span><span style=display:flex><span>			r<span style=color:#666>=</span>mid<span style=color:#666>-</span><span style=color:#444>1</span><span style=color:#888>;</span>
-</span></span><span style=display:flex><span>		<span style=color:#888>}</span>
-</span></span><span style=display:flex><span>	<span style=color:#888>}</span>
-</span></span><span style=display:flex><span>	<span style=color:#2838b0>if</span><span style=color:#888>(</span>l<span style=color:#666>==</span>m<span style=color:#888>){</span>
-</span></span><span style=display:flex><span>		printf<span style=color:#888>(</span><span style=color:#b83838>&#34;0&#34;</span><span style=color:#888>);</span>
-</span></span><span style=display:flex><span>	<span style=color:#888>}</span>
-</span></span><span style=display:flex><span>	<span style=color:#2838b0>else</span><span style=color:#888>{</span>
-</span></span><span style=display:flex><span>		printf<span style=color:#888>(</span><span style=color:#b83838>&#34;-1</span><span style=color:#709030>\n</span><span style=color:#b83838>%d&#34;</span><span style=color:#888>,</span>l<span style=color:#666>+</span><span style=color:#444>1</span><span style=color:#888>);</span>
-</span></span><span style=display:flex><span>	<span style=color:#888>}</span>
-</span></span><span style=display:flex><span>	<span style=color:#2838b0>return</span> <span style=color:#444>0</span><span style=color:#888>;</span>
-</span></span><span style=display:flex><span><span style=color:#888>}</span>
+<a class=link href=https://findnick.top/tags/solution>#solution</a></div><article class=content><p>可以发现,当第 $ i $ 个订单可以满足时,第 $ i-1 $ 个订单也可以满足.<p>于是可以想到二分答案求解,差分计算每个订单,复杂度 $ O(n\log{n}) $ .<div class=highlight><pre tabindex=0 style=color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#505050>#include</span><span style=color:#505050>&lt;cstdio&gt;</span><span style=color:#505050>
+</span></span></span><span style=display:flex><span><span style=color:#505050>#include</span><span style=color:#505050>&lt;cstring&gt;</span><span style=color:#505050>
+</span></span></span><span style=display:flex><span><span style=color:#505050>#include</span><span style=color:#505050>&lt;algorithm&gt;</span><span style=color:#505050>
+</span></span></span><span style=display:flex><span><span style=color:#505050></span><span style=color:#5317ac>using</span> <span style=color:#5317ac>namespace</span> std; 
+</span></span><span style=display:flex><span><span style=color:#005a5f>long</span> <span style=color:#005a5f>long</span> num[<span style=color:#0000c0>1000006</span>];
+</span></span><span style=display:flex><span><span style=color:#005a5f>long</span> <span style=color:#005a5f>long</span> r[<span style=color:#0000c0>1000006</span>],n,m,res;
+</span></span><span style=display:flex><span><span style=color:#5317ac>struct</span> Node{
+</span></span><span style=display:flex><span>	<span style=color:#005a5f>long</span> <span style=color:#005a5f>long</span> l,r,k;
+</span></span><span style=display:flex><span>}node[<span style=color:#0000c0>1000006</span>];
+</span></span><span style=display:flex><span><span style=color:#005a5f>int</span> <span style=color:#721045>check</span>(<span style=color:#005a5f>long</span> <span style=color:#005a5f>long</span> x){
+</span></span><span style=display:flex><span>	res<span style=color:#00538b>=</span><span style=color:#0000c0>0</span>;
+</span></span><span style=display:flex><span>	memset(num,<span style=color:#0000c0>0</span>,<span style=color:#5317ac>sizeof</span> num);
+</span></span><span style=display:flex><span>	<span style=color:#5317ac>for</span>(<span style=color:#005a5f>int</span> i<span style=color:#00538b>=</span><span style=color:#0000c0>1</span>;i<span style=color:#00538b>&lt;=</span>x;i<span style=color:#00538b>++</span>){
+</span></span><span style=display:flex><span>		num[node[i].l]<span style=color:#00538b>+=</span>node[i].k;
+</span></span><span style=display:flex><span>		num[node[i].r<span style=color:#00538b>+</span><span style=color:#0000c0>1</span>]<span style=color:#00538b>-=</span>node[i].k;
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#5317ac>for</span>(<span style=color:#005a5f>int</span> i<span style=color:#00538b>=</span><span style=color:#0000c0>1</span>;i<span style=color:#00538b>&lt;=</span>n;i<span style=color:#00538b>++</span>){
+</span></span><span style=display:flex><span>		res<span style=color:#00538b>+=</span>num[i];
+</span></span><span style=display:flex><span>		<span style=color:#5317ac>if</span>(res<span style=color:#00538b>&gt;</span>r[i]){
+</span></span><span style=display:flex><span>			<span style=color:#5317ac>return</span>  <span style=color:#0000c0>0</span>;
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#5317ac>return</span> <span style=color:#0000c0>1</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#005a5f>int</span> <span style=color:#721045>main</span>(){
+</span></span><span style=display:flex><span>	scanf(<span style=color:#2544bb>&#34;%lld%lld&#34;</span>,<span style=color:#00538b>&amp;</span>n,<span style=color:#00538b>&amp;</span>m);
+</span></span><span style=display:flex><span>	<span style=color:#5317ac>for</span>(<span style=color:#005a5f>int</span> i<span style=color:#00538b>=</span><span style=color:#0000c0>1</span>;i<span style=color:#00538b>&lt;=</span>n;i<span style=color:#00538b>++</span>){
+</span></span><span style=display:flex><span>		scanf(<span style=color:#2544bb>&#34;%lld&#34;</span>,<span style=color:#00538b>&amp;</span>r[i]);
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#5317ac>for</span>(<span style=color:#005a5f>int</span> i<span style=color:#00538b>=</span><span style=color:#0000c0>1</span>;i<span style=color:#00538b>&lt;=</span>m;i<span style=color:#00538b>++</span>){
+</span></span><span style=display:flex><span>		scanf(<span style=color:#2544bb>&#34;%lld%lld%lld&#34;</span>,<span style=color:#00538b>&amp;</span>node[i].k,<span style=color:#00538b>&amp;</span>node[i].l,<span style=color:#00538b>&amp;</span>node[i].r);
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#005a5f>long</span> <span style=color:#005a5f>long</span> l<span style=color:#00538b>=</span><span style=color:#0000c0>0</span>,r<span style=color:#00538b>=</span>m;
+</span></span><span style=display:flex><span>	<span style=color:#5317ac>while</span>(l<span style=color:#00538b>&lt;</span>r){
+</span></span><span style=display:flex><span>		<span style=color:#005a5f>long</span> <span style=color:#005a5f>long</span> mid<span style=color:#00538b>=</span>(l<span style=color:#00538b>+</span>r<span style=color:#00538b>+</span><span style=color:#0000c0>1</span>)<span style=color:#00538b>&gt;&gt;</span><span style=color:#0000c0>1</span>;
+</span></span><span style=display:flex><span>		<span style=color:#5317ac>if</span>(check(mid)){
+</span></span><span style=display:flex><span>			l<span style=color:#00538b>=</span>mid;
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>		<span style=color:#5317ac>else</span>{
+</span></span><span style=display:flex><span>			r<span style=color:#00538b>=</span>mid<span style=color:#00538b>-</span><span style=color:#0000c0>1</span>;
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#5317ac>if</span>(l<span style=color:#00538b>==</span>m){
+</span></span><span style=display:flex><span>		printf(<span style=color:#2544bb>&#34;0&#34;</span>);
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#5317ac>else</span>{
+</span></span><span style=display:flex><span>		printf(<span style=color:#2544bb>&#34;-1</span><span style=color:#2544bb>\n</span><span style=color:#2544bb>%d&#34;</span>,l<span style=color:#00538b>+</span><span style=color:#0000c0>1</span>);
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#5317ac>return</span> <span style=color:#0000c0>0</span>;
+</span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>注意开<code>long long</code>(大悲)</article><div class=paginator><a class=link href=https://findnick.top/post/luogu-p1311/>← prev</a>
 <a class=link href=https://findnick.top/post/stringhash/>next →</a></div><div class=comment></div><style>.tk-footer{display:none!important}</style><div id=tcomment></div><script type=module>twikoo.init({envId:"https://twikoo.findnick.top/",el:"#tcomment"})</script></main><footer id=footer><div><span>© 2023</span> - <span>2023</span></div><div class=footnote><span></span></div></footer></div>
